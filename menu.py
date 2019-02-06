@@ -25,9 +25,13 @@ def menu():
     # let x be the average salary to test conditions
     x = data.salary_mode()
     avgSalary = "$" + addComma(x) if type(x) == int else data.salary_mode()
-    print(f"\nThe annual salary for {data.title}s at {data.company}"
-          f" in the year {data.year}:"
-          f"\n - Min is ${addComma(data.min_salary())}, "
+    if company != "":
+        print(f"\nThe annual salary for {data.title}s at {data.company}"
+              f" in the year {data.year}:")
+    else:
+        print(f"\nThe annual salary for {data.title}s"
+              f" in the year {data.year}:")
+    print(f" - Min is ${addComma(data.min_salary())}, "
           f"Average is ${addComma(data.avg_salary())},"
           f" Max is ${addComma(data.max_salary())}")
     print(f" - Median salary is ${addComma(data.median_salary())}")

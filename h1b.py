@@ -16,10 +16,13 @@ class H1b_database:
         self.company = company.lower().capitalize()
         # ensures each word is capitalized for display
         self.title = job_title.title()
+        # used for url searches only
+        self._title = "+".join(self.title.split()).lower()
         self.year = self.default_year() if year is None else year
         # lower() is used to ensure company name is in lowercase during search
-        self.url = "https://h1bdata.info/index.php?em=" +\
-                   f"{self.company.lower()}&year={self.year}"
+        self.url = rf"https://h1bdata.info/index.php?em=" +\
+                   rf"{self.company.lower()}&job={self._title}&city=" +\
+                   rf"&year={self.year}"
         # calculate one time and store value for easy reference
         self.salaries = self.get_salaries()
 
@@ -37,22 +40,24 @@ class H1b_database:
 
     def get_salaries(self):
         salary_list = []
-        search = re.compile(rf'{self.title.upper()}'
-                            r'[ 0-9.<a-z=~"->&;A-Z]+\$[0-9]+.[0-9]+')
+        # used for regex when searching
+        tempTitle = r"\+".join(self.title.split()).upper()
+        search = re.compile(rf'{tempTitle}'
+                            r'[ 0-9.<a-z=~"->&;A-Z]+\$?[0-9]+,[0-9]+')
         matches = search.finditer(self.raw_html())  # get search results
         if matches is not None:
             for match in matches:
                 string = match.group(0)  # extract string from search result
                 index = string.find("$")  # find salary that starts with $ sign
-                if index != -1:
-                    # extract salary and remove the , sign
-                    salary = int(string[index+1:].replace(",", ""))
-                    salary_list.append(salary)
-                else:
-                    return None
+                if index == -1:
+                    # find salary when $ is unavailable
+                    index = string.find("<td>") + 3
+                # extract salary and remove the , sign
+                salary = int(string[index+1:].replace(",", ""))
+                salary_list.append(salary)
             salary_list.sort()
         else:
-            salary_list = None
+            print("No salary data available!")
         return salary_list
 
     def min_salary(self):
