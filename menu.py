@@ -30,7 +30,7 @@ def menu():
           f"\n - Min is ${addComma(data.min_salary())}, "
           f"Average is ${addComma(data.avg_salary())},"
           f" Max is ${addComma(data.max_salary())}")
-    print(f" - Average salary is ${addComma(data.median_salary())}")
+    print(f" - Median salary is ${addComma(data.median_salary())}")
     print(" - The most common salary given is "
           f"{avgSalary}")
     print(f" - The standard deviation is {data.salary_stdev()}")
