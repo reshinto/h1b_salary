@@ -30,9 +30,9 @@ Key the following in the terminal to run app:
 python run.py
 
 ## Usage example
->>> Company name: google
->>> Job Title name: software engineer
->>> Set year as most recent [y/n]? y
+* Company name: google
+* Job Title name: software engineer
+* Set year as most recent [y/n]? y
 
 The annual salary for Software Engineers at Google in the year 2018:
  - Min is $86,540, Average is $141,742, Max is $331,000
