@@ -36,6 +36,6 @@ python run.py
 
 The annual salary for Software Engineers at Google in the year 2018:
  - Min is $86,540, Average is $141,742, Max is $331,000
- - Average salary is $138,000
+ - Median salary is $138,000
  - The most common salary given is $120,000
  - The standard deviation is 23078
