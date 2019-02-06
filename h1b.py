@@ -37,10 +37,12 @@ class H1b_database:
 
     def get_salaries(self):
         salary_list = []
-        search = re.compile(rf'{self.title.upper()}\s\(?[0-9]+.[0-9]+\)?' +
-                            '.....................................' +
-                            '.....................................' +
-                            '........................[0-9]+,[0-9]+')
+        # search = re.compile(rf'{self.title.upper()}\s\(?[0-9]+.[0-9]+\)?' +
+        #                     '.....................................' +
+        #                     '.....................................' +
+        #                     '........................[0-9]+,[0-9]+')
+        search = re.compile(rf'{self.title.upper()}'
+                            r'[ 0-9.<a-z=~"->&;A-Z]+\$[0-9]+.[0-9]+')
         matches = search.finditer(self.raw_html())  # get search results
         if matches is not None:
             for match in matches:
