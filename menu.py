@@ -16,8 +16,8 @@ def addComma(integer):
 
 
 def menu():
-    company = input("Company name: ")
-    job_title = input("Job Title name: ")
+    company = input("Company name: ").strip()
+    job_title = input("Job Title name: ").strip()
     default_year = input("Set year as most recent [y/n]? ").lower()
     year = int(input("Year: ")) if default_year == "n" else None
     # year = None if default_year == "y" else int(input("Year: "))
