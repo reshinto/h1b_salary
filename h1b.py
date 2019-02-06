@@ -9,9 +9,7 @@ import statistics as stat
 
 
 class H1b_database:
-    """
-
-    """
+    """H1B salary database"""
     def __init__(self, company, job_title, year=None):
         # ensures company name is all in lowercase and capitalized for display
         self.company = company.lower().capitalize()
@@ -84,7 +82,3 @@ class H1b_database:
             return stat.mode(self.salaries)
         except stat.StatisticsError:
             return "unavailable because multiple modes exists"
-
-
-if __name__ == "__main__":
-    pass
