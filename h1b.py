@@ -32,7 +32,7 @@ class H1b_database:
         return datetime.datetime.now().year - 1
 
     def raw_html(self):
-        """This is return a string of the entire raw html data"""
+        """This will return a string of the entire raw html data"""
         return requests.get(f"{self.url}").text
 
     def get_salaries(self):
