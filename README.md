@@ -30,6 +30,7 @@ Key the following in the terminal to run app:
 python run.py
 
 ## Usage example
+### example 1: search for a job title in a company
 * Company name: google
 * Job Title name: software engineer
 * Set year as most recent [y/n]? y
@@ -39,3 +40,15 @@ The annual salary for Software Engineers at Google in the year 2018:
  - Median salary is $138,000
  - The most common salary given is $120,000
  - The standard deviation is 23078
+
+### example 2: search for a job title across companies
+* Company name: 
+* Job Title name: software engineer
+* Set year as most recent [y/n]? n
+* Year: 2017
+
+The annual salary for Software Engineers in the year 2017:
+ - Min is $1,425, Average is $93,716, Max is $300,000
+ - Median salary is $88,026
+ - The most common salary given is $60,000
+ - The standard deviation is 27497
